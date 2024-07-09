@@ -1,0 +1,52 @@
+package lecturepractice;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.EmptyStackException;
+
+public class Generic<E> {
+    ArrayList<E> list=new ArrayList<>();
+    public int getsize(){
+        return list.size();
+    }
+    public E peek(){
+        return list.get(getsize()-1);
+    }
+    public void push(E e){
+        list.add(e);
+    }
+    public E pop(E e){
+        if(bosmu())
+            throw new EmptyStackException();
+        E result=list.get(getsize()-1);
+        list.remove(getsize()-1);
+        return result;
+    }
+    public boolean bosmu(){
+        return list.isEmpty();
+    }
+
+
+    public static void main(String[] args) {
+        GenericStack<String> stack=new GenericStack<>();
+        stack.push("A");
+        stack.push("B");
+        stack.push("C");
+        System.out.println(stack.peek());
+       // GenericStack.print(stack);
+
+        GenericStack<Integer> nums=new GenericStack<>();
+        nums.push(10);
+        nums.push(20);
+       // GenericStack.print(stack);
+    }
+    public static void print(GenericStack<?> stack){
+        while (!stack.isEmpty())
+            System.out.println(stack.pop());
+
+    }
+   /* public void pushAll(Collections<E> source){
+        for(E e:source)
+          push(e);
+    }*/
+}
